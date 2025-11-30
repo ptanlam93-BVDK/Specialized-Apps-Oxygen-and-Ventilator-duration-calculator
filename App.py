@@ -52,37 +52,31 @@ st.markdown(
     - BN **chuyển viện theo yêu cầu**: **Không tính ngày giường ngày hiện tại**.
     """
 )
-# --- CSS thu nhỏ chữ cho tab (dán NHANH trước khi tạo tabs) ---
-st.markdown(
-    """
-    <style>
-    /* chung: chữ tab nhỏ hơn và padding nhỏ lại */
-    div[role="tablist"] > button[role="tab"] {
-        font-size: 16px !important;       /* đổi kích thước chữ ở đây */
-        padding: 6px 10px !important;     /* padding trên/dưới và trái/phải */
-        line-height: 1 !important;
-        letter-spacing: 0.2px !important;
-    }
+## ===== CSS LÀM CHỮ TAB TO RÕ =====
+st.markdown("""
+<style>
+div[role="tablist"] > button {
+    font-size: 26px !important;
+    padding: 10px 20px !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+}
 
-    /* tab đang được chọn (một vài phiên bản Streamlit dùng aria-selected, vài phiên bản khác data-selected) */
-    div[role="tablist"] > button[role="tab"][aria-selected="true"],
-    div[role="tablist"] > button[role="tab"][data-selected="true"] {
-        font-weight: 700 !important;
-        border-bottom-width: 3px !important;   /* dày đường gạch dưới */
-    }
+div[role="tablist"] > button[aria-selected="true"],
+div[role="tablist"] > button[data-selected="true"] {
+    color: #FF4500 !important;
+    border-bottom: 4px solid #FF4500 !important;
+}
 
-    /* cho màn hình nhỏ (mobile) giảm thêm */
-    @media (max-width: 600px) {
-        div[role="tablist"] > button[role="tab"] {
-            font-size: 14px !important;
-            padding: 5px 8px !important;
-        }
+@media (max-width: 600px) {
+    div[role="tablist"] > button {
+        font-size: 22px !important;
+        padding: 8px 14px !important;
     }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-# --- end CSS ---
+}
+</style>
+""", unsafe_allow_html=True)
+# ===== END CSS TAB =====
 tab_may, tab_oxy = st.tabs(["⏰ Giờ thở máy (ngày giường)", "⏰ Giờ thở oxy"])
 
 
