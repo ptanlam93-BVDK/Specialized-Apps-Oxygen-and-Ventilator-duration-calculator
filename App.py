@@ -8,18 +8,18 @@ st.set_page_config(
     layout="centered"
 )
 
-st.title("💻 Công cụ tính giờ Thở máy/Thở oxy dành cho điều dưỡng")
+st.title("💻 **Công cụ tính giờ Thở máy/Thở oxy dành cho điều dưỡng**")
 
 st.markdown(
     """
-    Công cụ này chỉ dùng để ** Tính toán và hiển thị kết quả **, không lưu dữ liệu, không tốn dung lượng, không đăng nhập bất cứ ID hay Usermail và mật khẩu nào.  
-    Hỗ trợ sử dụng tính toán ** Qui đổi thời gian Thở máy (Ngày giường HSCC – HSTC) & thời gian Thở Oxy **.
-    **Được xây dựng bởi:** CNĐD. **Phan Tấn Lãm**, **Đơn vị:** Khoa Hồi sức tích cực - Chống độc, **Bệnh viện:**🏥 Bệnh viện Đa khoa Đồng Tháp.
+    Công cụ này chỉ dùng để **Tính toán và hiển thị kết quả**, không lưu dữ liệu, không tốn dung lượng, không đăng nhập bất cứ ID hay Usermail và mật khẩu nào.  
+    Hỗ trợ sử dụng tính toán **Qui đổi thời gian Thở máy (Ngày giường HSCC – HSTC) & thời gian Thở Oxy**.
+    **Được xây dựng bởi:** CNĐD. **Phan Tấn Lãm**, **Đơn vị:**Khoa Hồi sức tích cực - Chống độc**, Bệnh viện:🏥 **Bệnh viện Đa khoa Đồng Tháp**.
     ⛔ Lưu ý: Thời gian Thở máy qui ra (Ngày giường HSCC – HSTC) phải dựa theo thực tế. Phần mềm Không thể tính chính xác **Tuyệt đối**.
     < 0.3 → 1 HSCC, >= 0.3 – <= 0.8 → 0.5 HSCC + 0.5 HSTC, >= 0.8 → 1 HSTC, Bệnh nhân thời gian nằm dưới <= 4giờ tính công khám,  Bệnh nhân thời gian nằm dưới >4giờ tính 1 Ngày giường HSCC hoặc HSTC,
-    ** Thời điểm nằm 2 khoa liên tiếp khoa chuyển tiếp không tính ngày giường (Ví dụ: Nếu BN nằm CCTH - NTH - HSTC,  thì  NTH sẽ không tính 0.5 ngày giường, HSTC sẽ tính ngày giường)**.
-    ** Bệnh nhân Chuyển viện theo yêu cầu: Không tính ngày giường ngày hiện tại cho dù Bác sĩ Tiên lượng nặng, trung binh, không thay đổi,...)**.
-    ** Thời điểm Bệnh nhân nằm <24h tính 1 ngày giường Ngày giường HSCC hoặc HSTC**.
+    **Thời điểm nằm 2 khoa liên tiếp khoa chuyển tiếp không tính ngày giường (Ví dụ: Nếu BN nằm CCTH - NTH - HSTC,  thì  NTH sẽ không tính 0.5 ngày giường, HSTC sẽ tính ngày giường)**.
+    **Bệnh nhân Chuyển viện theo yêu cầu: Không tính ngày giường ngày hiện tại cho dù Bác sĩ Tiên lượng nặng, trung binh, không thay đổi,...)**.
+    **Thời điểm Bệnh nhân nằm <24h tính 1 ngày giường Ngày giường HSCC hoặc HSTC**.
     
     """
 )
