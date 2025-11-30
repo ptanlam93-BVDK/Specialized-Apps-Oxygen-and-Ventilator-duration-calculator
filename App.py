@@ -388,7 +388,7 @@ if st.session_state["rows_may"]:
 # ===============================
 with tab_oxy:
     # -------- PHẦN 1: 1 KHOẢNG THỞ OXY TRONG NGÀY --------
-    st.subheader("🔵 Tính GIỜ THỞ OXY (1 khoảng trong ngày/24h)")
+    st.subheader("🔵 TÍNH THỜI GIAN GIỜ THỞ OXY (1 khoảng trong ngày/24h)")
 
     st.markdown("Nhập giờ dạng: `09h15`, `13:30`, `22h`, `24:00` …")
 
@@ -471,7 +471,7 @@ with tab_oxy:
             key="oxy_row_kt",
         )
     with d4:
-        add_oxy_row = st.button("➕ Thêm phiên OXY")
+        add_oxy_row = st.button("➕ Thêm Thời gian Thở Oxy")
 
     if add_oxy_row:
         if not ngay_oxy:
@@ -494,7 +494,7 @@ with tab_oxy:
                     }
                 )
 
-    if st.button("🗑️ Xóa tất cả thời gian thở OXY"):
+    if st.button("🗑️ Xóa tất cả thời gian Thở Oxy"):
         st.session_state["rows_oxy"] = []
 
     # Nếu có dữ liệu oxy đã nhập
