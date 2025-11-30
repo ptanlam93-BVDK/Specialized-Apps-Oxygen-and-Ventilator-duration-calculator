@@ -419,50 +419,29 @@ with tab_oxy:
             ket_qua_oxy = round(tong_gio_oxy, 2)
 
             st.markdown("---")
-            # Hộp kết quả oxy
+            # Hộp kết quả oxy – HTML không thụt lề để tránh bị hiển thị như code
             st.markdown(
                 f"""
-                <div style="
-                    text-align:center;
-                    padding:18px;
-                    border:2px solid red;
-                    border-radius:14px;
-                    background-color:#1E90FF;
-                ">
-                    <div style="
-                        font-size:22px;
-                        color:#FFFFFF;
-                        font-weight:600;
-                    ">
-                        🕒 Tổng thời gian thở oxy
-                    </div>
+<div style="text-align:center; padding:18px; border:2px solid red;
+    border-radius:14px; background-color:#1E90FF;">
+    <div style="font-size:22px; color:#FFFFFF; font-weight:600;">
+        🕒 Tổng thời gian thở oxy
+    </div>
 
-                    <div style="
-                        font-size:34px;
-                        font-weight:bold;
-                        color:orange;
-                    ">
-                        {tong_gio_oxy:.2f} GIỜ ({tong_phut_oxy} phút)
-                    </div>
+    <div style="font-size:34px; font-weight:bold; color:orange;">
+        {tong_gio_oxy:.2f} GIỜ ({tong_phut_oxy} phút)
+    </div>
 
-                    <br>
+    <br>
 
-                    <div style="
-                        font-size:22px;
-                        color:#FFFFFF;
-                        font-weight:600;
-                    ">
-                        ⏰ Giờ oxy (giờ thẳng)
-                    </div>
+    <div style="font-size:22px; color:#FFFFFF; font-weight:600;">
+        ⏰ Giờ oxy (giờ thẳng)
+    </div>
 
-                    <div style="
-                        font-size:42px;
-                        font-weight:bold;
-                        color:orange;
-                    ">
-                        {ket_qua_oxy}
-                    </div>
-                </div>
+    <div style="font-size:42px; font-weight:bold; color:orange;">
+        {ket_qua_oxy}
+    </div>
+</div>
                 """,
                 unsafe_allow_html=True,
             )
@@ -526,17 +505,17 @@ with tab_oxy:
         # KHUNG ĐẸP cho “Các thời gian thở oxy đã nhập”
         st.markdown(
             """
-            <div style="
-                border-radius:14px;
-                padding:16px;
-                background-color:#f0f8ff;
-                border:2px solid #1E90FF;
-                margin-top:20px;
-            ">
-                <h3 style="color:#1E90FF; text-align:center; margin-bottom:12px;">
-                    🧾 CÁC THỜI GIAN THỞ OXY ĐÃ NHẬP
-                </h3>
-            </div>
+<div style="
+    border-radius:14px;
+    padding:16px;
+    background-color:#f0f8ff;
+    border:2px solid #1E90FF;
+    margin-top:20px;
+">
+    <h3 style="color:#1E90FF; text-align:center; margin-bottom:12px;">
+        🧾 CÁC THỜI GIAN THỞ OXY ĐÃ NHẬP
+    </h3>
+</div>
             """,
             unsafe_allow_html=True,
         )
@@ -590,14 +569,8 @@ with tab_oxy:
         st.markdown("## ✅ KẾT QUẢ GIỜ OXY THEO TỪNG NGÀY")
 
         bang_ket_qua_oxy = []
-        tong_gio_oxy_all = 0.0
-        tong_giatri_oxy_all = 0.0
-
         for ngay, giatri in sorted(tong_theo_ngay_oxy.items()):
             gio_ngay = gio_theo_ngay_oxy[ngay]
-            tong_gio_oxy_all += gio_ngay
-            tong_giatri_oxy_all += giatri
-
             bang_ket_qua_oxy.append(
                 {
                     "Ngày": ngay,
@@ -607,42 +580,3 @@ with tab_oxy:
             )
 
         st.table(bang_ket_qua_oxy)
-
-        # ====== CỘNG DỒN TOÀN BỘ OXY ======
-        st.markdown("## 📊 CỘNG DỒN TOÀN BỘ GIỜ OXY")
-
-        st.markdown(
-            f"""
-            <div style="
-                text-align:center;
-                padding:16px;
-                border-radius:14px;
-                background-color:#1E90FF;
-                color:white;
-                font-size:22px;
-                font-weight:bold;
-            ">
-                ✅ TỔNG GIỜ OXY: {round(tong_gio_oxy_all, 2)} giờ
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
-
-        st.markdown(
-            f"""
-            <div style="
-                margin-top:10px;
-                text-align:center;
-                padding:16px;
-                border-radius:14px;
-                background-color:#4da6ff;
-                color:white;
-                font-size:20px;
-                font-weight:bold;
-            ">
-                ✅ TỔNG GIÁ TRỊ /24: {round(tong_giatri_oxy_all, 3)}
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
-
