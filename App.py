@@ -169,7 +169,7 @@ with tab_may:
                     text-align:center;
                     padding:10px;
                     border-radius:10px;
-                    background-color:#f0f8ff;
+                    background-color:#0066FF;
                     font-size:20px;
                     font-weight:600;
                 ">
