@@ -1,11 +1,22 @@
 import streamlit as st
 
-# =========================
-# CẤU HÌNH & GIỚI THIỆU
-# =========================
 st.set_page_config(
     page_title="Công cụ tính giờ Thở máy/Thở oxy",
     layout="centered"
+)
+
+# ===============================
+# LOGO BỆNH VIỆN
+# ===============================
+st.image("logo.png", width=120)
+
+st.markdown(
+    """
+    <h3 style="text-align:center; color:#1E90FF;">
+        🏥 BỆNH VIỆN ĐA KHOA ĐỒNG THÁP
+    </h3>
+    """,
+    unsafe_allow_html=True
 )
 
 st.title("💻 Công cụ tính tiền Qui đổi giờ Thở máy/Thở oxy dành cho Điều dưỡng")
