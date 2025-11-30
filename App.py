@@ -17,7 +17,6 @@ st.markdown(
 
     **Được xây dựng bởi**:**CNĐD**.**Phan Tấn Lãm**  
     **Đơn vị:** **Khoa Hồi sức Tích cực - Chống độc**.
-    
     **Bệnh viện:** 🏥 **Bệnh viện Đa khoa Đồng Tháp**.
     
     ⛔ **Lưu ý chuyên môn (tóm tắt):**
