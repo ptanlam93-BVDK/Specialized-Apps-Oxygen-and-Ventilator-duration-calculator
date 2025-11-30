@@ -9,17 +9,17 @@ st.set_page_config(
 col1, col2 = st.columns([1.3, 6])
 
 with col1:
-    st.image("logo.png", width=150)
+    st.image("logo.png", width=130)
 
 with col2:
     st.markdown(
         """
         <div style="margin-top:20px;">
-            <h1 style="color:#1E90FF; font-weight:900; margin-bottom:5px;">
+            <h1 style="color:#1E90FF; font-weight:800; margin-bottom:5px;">
                  BỆNH VIỆN ĐA KHOA ĐỒNG THÁP
             </h1>
             <h4 style="color:#FFA500; font-weight:700; margin-top:0px;">
-                Khoa Hồi sức tích cực – Chống độc
+                Khoa Hồi sức Tích cực – Chống độc
             </h4>
         </div>
         """,
