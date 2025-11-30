@@ -12,19 +12,19 @@ st.title("💻 Công cụ tính giờ Thở máy/Thở oxy dành cho điều dư
 
 st.markdown(
     """
-    **Công cụ này chỉ dùng để Tính toán và hiển thị kết quả**, không lưu dữ liệu, không tốn dung lượng, **không đăng nhập bất cứ ID hay Useremail/mật khẩu** nào.  
+    **✅Công cụ này chỉ dùng để Tính toán và hiển thị kết quả**, không lưu dữ liệu, không tốn dung lượng, **không đăng nhập bất cứ ID hay Useremail/mật khẩu** nào.  
     Hỗ trợ sử dụng **Qui đổi thời gian Thở máy (ngày giường HSCC – HSTC) & thời gian Thở Oxy**.
 
-    **Được xây dựng bởi**:**CNĐD**.**Phan Tấn Lãm**;  
-    **Đơn vị:** **Khoa Hồi sức Tích cực - Chống độc**;    
-    **Bệnh viện:** 🏥 **Bệnh viện Đa khoa Đồng Tháp**.
+    **✅Được xây dựng bởi**:**CNĐD**.**Phan Tấn Lãm**;  
+    **✅Đơn vị:** **Khoa Hồi sức Tích cực - Chống độc**;    
+    **✅Bệnh viện:** 🏥 **Bệnh viện Đa khoa Đồng Tháp**.
     
     ⛔ **Lưu ý chuyên môn (tóm tắt):**
     - **Qui đổi ngày giường** theo tổng thời gian **Thở máy trong từng ngày**:
         - `< 0.3`  → `1` ngày HSCC  
         - `0.3 – 0.8` → `0.5` HSCC + `0.5` HSTC  
         - `> 0.8`  → `1` ngày HSTC  
-    - BN nằm **≤ 4 giờ**: Tính **Công khám**.  
+    - BN nằm **≤ 4 giờ**: **Tính Công khám**.  
     - BN nằm **> 4 giờ** nhưng **< 24 giờ**: Tính **1 ngày giường** (HSCC hoặc HSTC theo thực tế).  
     - BN được **Chuyển qua nhiều khoa liên tiếp**: **Khoa trung gian **không** tính ngày giường**  
       (VD: CCTH → **NTH** → HSTC thì **NTH** không tính 0.5 ngày giường, **khoa hiện tại tính ngày giường còn lại**).  
