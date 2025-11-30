@@ -21,9 +21,9 @@ st.markdown(
     
     ⛔ **Lưu ý chuyên môn (tóm tắt):**
     - **Qui đổi ngày giường** theo tổng thời gian **Thở máy trong từng ngày**:
-        - `< 0.3`  → `1` Ngày HSCC  
-        - `0.3 – 0.8` → `0.5` HSCC + `0.5` HSTC  
-        - `> 0.8`  → `1` Ngày HSTC  
+        - `< 0.3`  → `1` Ngày **HSCC**  
+        - `0.3 – 0.8` → `0.5` **HSCC** + `0.5` **HSTC**  
+        - `> 0.8`  → `1` Ngày **HSTC**  
     - BN nằm **≤ 4 giờ**: **Tính Công khám**.  
     - BN nằm **> 4 giờ** nhưng **< 24 giờ**: Tính **1 ngày giường** (HSCC hoặc HSTC theo thực tế).  
     - BN được **Chuyển qua nhiều khoa liên tiếp**: **Khoa trung gian **không** tính ngày giường**  
@@ -120,7 +120,7 @@ def quy_doi_ngay_giuong(tong_ngay: float):
 # ===============================
 with tab_may:
     # -------- PHẦN 1: 1 KHOẢNG TRONG NGÀY --------
-    st.subheader("💊 Tính GIỜ THỞ MÁY và NGÀY GIƯỜNG (1 khoảng trong ngày)")
+    st.subheader("💊 Tính GIỜ THỞ MÁY và NGÀY GIƯỜNG (1 khoảng trong ngày/24)")
 
     st.markdown("Nhập giờ dạng: `09h15`, `13:40`, `22h`, `24:00` …")
 
@@ -390,17 +390,26 @@ if st.session_state["rows_may"]:
 # 🔵 TAB: GIỜ THỞ OXY
 # ===============================
 with tab_oxy:
-    st.subheader("🔵 Tính GIỜ THỞ OXY")
+    # -------- PHẦN 1: 1 KHOẢNG THỞ OXY TRONG NGÀY --------
+    st.subheader("🔵 Tính GIỜ THỞ OXY (1 khoảng trong ngày/24h)")
 
     st.markdown("Nhập giờ dạng: `09h15`, `13:30`, `22h`, `24:00` …")
 
     col3, col4 = st.columns(2)
     with col3:
-        bd_oxy = st.text_input("Giờ bắt đầu thở oxy", placeholder="VD: 13h30", key="oxy_bd")
+        bd_oxy = st.text_input(
+            "Giờ bắt đầu thở oxy",
+            placeholder="VD: 13h30",
+            key="oxy_bd"
+        )
     with col4:
-        kt_oxy = st.text_input("Giờ kết thúc thở oxy", placeholder="VD: 24:00", key="oxy_kt")
+        kt_oxy = st.text_input(
+            "Giờ kết thúc thở oxy",
+            placeholder="VD: 24:00",
+            key="oxy_kt"
+        )
 
-    if st.button("✅ TÍNH GIỜ THỞ OXY"):
+    if st.button("✅ TÍNH GIỜ THỞ OXY (1 khoảng)"):
         tong_phut_oxy, err_oxy = tinh_phut(bd_oxy, kt_oxy)
 
         if err_oxy:
@@ -410,6 +419,7 @@ with tab_oxy:
             ket_qua_oxy = round(tong_gio_oxy, 2)
 
             st.markdown("---")
+            # Hộp kết quả oxy – KHÔNG in code HTML nữa
             st.markdown(
                 f"""
                 <div style="
@@ -442,7 +452,7 @@ with tab_oxy:
                         color:#FFFFFF;
                         font-weight:600;
                     ">
-                        ⏰ Giờ oxy
+                        ⏰ Giờ oxy (giờ thẳng)
                     </div>
 
                     <div style="
@@ -456,3 +466,173 @@ with tab_oxy:
                 """,
                 unsafe_allow_html=True
             )
+
+    # -------- PHẦN 2: NHIỀU NGÀY THỞ OXY (tính độc lập từng ngày) --------
+    st.markdown("---")
+    st.subheader("📋 NHIỀU NGÀY THỞ OXY (tính độc lập từng ngày)")
+
+    if "rows_oxy" not in st.session_state:
+        st.session_state["rows_oxy"] = []
+
+    d1, d2, d3, d4 = st.columns([1.4, 1, 1, 0.8])
+    with d1:
+        ngay_oxy = st.text_input(
+            "Ngày",
+            placeholder="VD: 02/12/2025",
+            key="oxy_row_ngay"
+        )
+    with d2:
+        bd_oxy_row = st.text_input(
+            "Giờ bắt đầu",
+            placeholder="VD: 0h",
+            key="oxy_row_bd"
+        )
+    with d3:
+        kt_oxy_row = st.text_input(
+            "Giờ kết thúc",
+            placeholder="VD: 10h",
+            key="oxy_row_kt"
+        )
+    with d4:
+        add_oxy_row = st.button("➕ Thêm phiên OXY")
+
+    if add_oxy_row:
+        if not ngay_oxy:
+            st.error("⛔ Vui lòng nhập ngày.")
+        else:
+            tong_phut_oxy_row, err_oxy_row = tinh_phut(bd_oxy_row, kt_oxy_row)
+            if err_oxy_row:
+                st.error("⛔ " + err_oxy_row)
+            else:
+                gio_oxy_row = round(tong_phut_oxy_row / 60, 2)
+                giatri_oxy_row = round(gio_oxy_row / 24, 3)
+
+                st.session_state["rows_oxy"].append(
+                    {
+                        "Ngày": ngay_oxy,
+                        "Bắt đầu": bd_oxy_row,
+                        "Kết thúc": kt_oxy_row,
+                        "Giờ oxy": gio_oxy_row,
+                        "Giá trị /24": giatri_oxy_row,
+                    }
+                )
+
+    if st.button("🗑️ Xóa tất cả thời gian thở OXY"):
+        st.session_state["rows_oxy"] = []
+
+    # Nếu có dữ liệu oxy đã nhập
+    if st.session_state["rows_oxy"]:
+
+        # KHUNG ĐẸP cho “Các thời gian thở oxy đã nhập”
+        st.markdown("""
+        <div style="
+            border-radius:14px;
+            padding:16px;
+            background-color:#f0f8ff;
+            border:2px solid #1E90FF;
+            margin-top:20px;
+        ">
+            <h3 style="color:#1E90FF; text-align:center; margin-bottom:12px;">
+                🧾 CÁC THỜI GIAN THỞ OXY ĐÃ NHẬP
+            </h3>
+        </div>
+        """, unsafe_allow_html=True)
+
+        # Header bảng
+        c1, c2, c3, c4, c5, c6 = st.columns([2, 2, 2, 2, 2, 1])
+        with c1: st.markdown("**Ngày**")
+        with c2: st.markdown("**Bắt đầu**")
+        with c3: st.markdown("**Kết thúc**")
+        with c4: st.markdown("**Giờ oxy**")
+        with c5: st.markdown("**Giá trị /24**")
+        with c6: st.markdown("**Xóa**")
+
+        st.markdown("---")
+
+        # Các dòng + nút ❌ xóa 1 phiên
+        for i, r in enumerate(st.session_state["rows_oxy"]):
+            c1, c2, c3, c4, c5, c6 = st.columns([2, 2, 2, 2, 2, 1])
+
+            with c1:
+                st.write(r["Ngày"])
+            with c2:
+                st.write(r["Bắt đầu"])
+            with c3:
+                st.write(r["Kết thúc"])
+            with c4:
+                st.write(r["Giờ oxy"])
+            with c5:
+                st.write(r["Giá trị /24"])
+            with c6:
+                if st.button("❌", key=f"xoa_oxy_{i}"):
+                    st.session_state["rows_oxy"].pop(i)
+                    st.rerun()
+
+        # ====== TÍNH TỔNG GIỜ OXY THEO TỪNG NGÀY ======
+        tong_theo_ngay_oxy = {}
+        gio_theo_ngay_oxy = {}
+        for r in st.session_state["rows_oxy"]:
+            ngay = r["Ngày"]
+            tong_theo_ngay_oxy.setdefault(ngay, 0.0)
+            gio_theo_ngay_oxy.setdefault(ngay, 0.0)
+            tong_theo_ngay_oxy[ngay] += r["Giá trị /24"]
+            gio_theo_ngay_oxy[ngay] += r["Giờ oxy"]
+
+        st.markdown("## ✅ KẾT QUẢ GIỜ OXY THEO TỪNG NGÀY")
+
+        bang_ket_qua_oxy = []
+        tong_gio_oxy_all = 0.0
+        tong_giatri_oxy_all = 0.0
+
+        for ngay, giatri in sorted(tong_theo_ngay_oxy.items()):
+            gio_ngay = gio_theo_ngay_oxy[ngay]
+            tong_gio_oxy_all += gio_ngay
+            tong_giatri_oxy_all += giatri
+
+            bang_ket_qua_oxy.append(
+                {
+                    "Ngày": ngay,
+                    "Tổng giờ oxy": round(gio_ngay, 2),
+                    "Tổng /24": round(giatri, 3),
+                }
+            )
+
+        st.table(bang_ket_qua_oxy)
+
+        # ====== CỘNG DỒN TOÀN BỘ OXY ======
+        st.markdown("## 📊 CỘNG DỒN TOÀN BỘ GIỜ OXY")
+
+        st.markdown(
+            f"""
+            <div style="
+                text-align:center;
+                padding:16px;
+                border-radius:14px;
+                background-color:#1E90FF;
+                color:white;
+                font-size:22px;
+                font-weight:bold;
+            ">
+                ✅ TỔNG GIỜ OXY: {round(tong_gio_oxy_all, 2)} giờ
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+        st.markdown(
+            f"""
+            <div style="
+                margin-top:10px;
+                text-align:center;
+                padding:16px;
+                border-radius:14px;
+                background-color:#4da6ff;
+                color:white;
+                font-size:20px;
+                font-weight:bold;
+            ">
+                ✅ TỔNG GIÁ TRỊ /24: {round(tong_giatri_oxy_all, 3)}
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
