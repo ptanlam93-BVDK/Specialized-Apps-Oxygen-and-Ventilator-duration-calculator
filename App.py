@@ -15,8 +15,8 @@ st.markdown(
     **Công cụ này chỉ dùng để Tính toán và hiển thị kết quả**, không lưu dữ liệu, không tốn dung lượng, **không đăng nhập bất cứ ID hay Useremail/mật khẩu** nào.  
     Hỗ trợ sử dụng **Qui đổi thời gian Thở máy (ngày giường HSCC – HSTC) & thời gian Thở Oxy**.
 
-    **Được xây dựng bởi**:**CNĐD**.**Phan Tấn Lãm**  
-    **Đơn vị:** **Khoa Hồi sức Tích cực - Chống độc**.
+    **Được xây dựng bởi**:**CNĐD**.**Phan Tấn Lãm**;  
+    **Đơn vị:** **Khoa Hồi sức Tích cực - Chống độc**;
     **Bệnh viện:** 🏥 **Bệnh viện Đa khoa Đồng Tháp**.
     
     ⛔ **Lưu ý chuyên môn (tóm tắt):**
