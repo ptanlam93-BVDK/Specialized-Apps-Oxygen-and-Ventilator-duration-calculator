@@ -159,13 +159,12 @@ def quy_doi_ngay_giuong(tong_ngay: float):
     else:
         return 0.0, 1.0, "1 ngày giường HSTC"
 
-# ===============================
+## ===============================
 # 🔵 TAB: GIỜ THỞ OXY
 # ===============================
 with tab_oxy:
     # -------- PHẦN 1: 1 KHOẢNG THỞ OXY TRONG NGÀY --------
-    st.subheader("🔵 TÍNH GIỜ THỞ OXY (một khoảng trong ngày)")
-
+    st.subheader("🔵 TÍNH GIỜ THỞ OXY ( Một khoảng trong ngày/24h)")
     st.markdown("Nhập giờ dạng: `09h15`, `13:30`, `22h`, `24:00` …")
 
     col3, col4 = st.columns(2)
@@ -182,8 +181,7 @@ with tab_oxy:
             key="oxy_kt",
         )
 
-    # Nút tính 1 khoảng
-    if st.button("✅ TÍNH GIỜ THỞ OXY (một khoảng)"):
+    if st.button("✅ TÍNH GIỜ THỞ OXY ( Một khoảng)"):
         tong_phut_oxy, err_oxy = tinh_phut(bd_oxy, kt_oxy)
 
         if err_oxy:
@@ -192,15 +190,35 @@ with tab_oxy:
             tong_gio_oxy = tong_phut_oxy / 60
             ket_qua_oxy = round(tong_gio_oxy, 2)
 
-            st.success(
-                f"Tổng thời gian thở oxy: {tong_gio_oxy:.2f} giờ ({tong_phut_oxy} phút) – Giờ oxy (giờ thẳng): {ket_qua_oxy}"
-            )
+            # Ô kết quả 1 khoảng thở oxy
+            html_oxy = f"""
+<div style="text-align:center; padding:18px; border:2px solid red;
+            border-radius:14px; background-color:#1E90FF;">
+  <div style="font-size:22px; color:#FFFFFF; font-weight:600;">
+    🕒 Tổng thời gian thở oxy
+  </div>
+
+  <div style="font-size:34px; font-weight:bold; color:orange; margin-top:6px;">
+    {tong_gio_oxy:.2f} GIỜ ({tong_phut_oxy} phút)
+  </div>
+
+  <br>
+
+  <div style="font-size:22px; color:#FFFFFF; font-weight:600;">
+    ⏰ Giờ oxy (giờ thẳng)
+  </div>
+
+  <div style="font-size:42px; font-weight:bold; color:orange; margin-top:4px;">
+    {ket_qua_oxy}
+  </div>
+</div>
+"""
+            st.markdown(html_oxy, unsafe_allow_html=True)
 
     # -------- PHẦN 2: NHIỀU NGÀY THỞ OXY (tính độc lập từng ngày) --------
     st.markdown("---")
     st.subheader("📋 NHIỀU NGÀY THỞ OXY (tính độc lập từng ngày)")
 
-    # Khởi tạo list lưu các phiên oxy
     if "rows_oxy" not in st.session_state:
         st.session_state["rows_oxy"] = []
 
@@ -226,7 +244,6 @@ with tab_oxy:
     with d4:
         add_oxy_row = st.button("➕ Thêm phiên OXY")
 
-    # Khi bấm thêm 1 phiên oxy
     if add_oxy_row:
         if not ngay_oxy:
             st.error("⛔ Vui lòng nhập ngày.")
@@ -248,16 +265,67 @@ with tab_oxy:
                     }
                 )
 
-    # Nút xóa hết
     if st.button("🗑️ Xóa tất cả thời gian thở OXY"):
         st.session_state["rows_oxy"] = []
 
     # Nếu có dữ liệu oxy đã nhập
     if st.session_state["rows_oxy"]:
-        st.markdown("### 🧾 CÁC PHIÊN THỞ OXY ĐÃ NHẬP")
-        st.table(st.session_state["rows_oxy"])
 
-        # Tính tổng theo từng ngày
+        # KHUNG ĐẸP cho “Các thời gian thở oxy đã nhập”
+        st.markdown(
+            """
+            <div style="
+                border-radius:14px;
+                padding:16px;
+                background-color:#f0f8ff;
+                border:2px solid #1E90FF;
+                margin-top:20px;
+            ">
+                <h3 style="color:#1E90FF; text-align:center; margin-bottom:12px;">
+                    🧾 CÁC THỜI GIAN THỞ OXY ĐÃ NHẬP
+                </h3>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+        # Header bảng
+        c1, c2, c3, c4, c5, c6 = st.columns([2, 2, 2, 2, 2, 1])
+        with c1:
+            st.markdown("**Ngày**")
+        with c2:
+            st.markdown("**Bắt đầu**")
+        with c3:
+            st.markdown("**Kết thúc**")
+        with c4:
+            st.markdown("**Giờ oxy**")
+        with c5:
+            st.markdown("**Giá trị /24**")
+        with c6:
+            st.markdown("**Xóa**")
+
+        st.markdown("---")
+
+        # Các dòng + nút ❌ xóa 1 phiên
+        for i, r in enumerate(st.session_state["rows_oxy"]):
+            c1, c2, c3, c4, c5, c6 = st.columns([2, 2, 2, 2, 2, 1])
+
+            with c1:
+                st.write(r["Ngày"])
+            with c2:
+                st.write(r["Bắt đầu"])
+            with c3:
+                st.write(r["Kết thúc"])
+            with c4:
+                st.write(r["Giờ oxy"])
+            with c5:
+                st.write(r["Giá trị /24"])
+            with c6:
+                if st.button("❌", key=f"xoa_oxy_{i}"):
+                    st.session_state["rows_oxy"].pop(i)
+                    st.rerun()
+
+        # ====== TÍNH TỔNG GIỜ OXY THEO TỪNG NGÀY ======
         tong_theo_ngay_oxy = {}
         gio_theo_ngay_oxy = {}
         for r in st.session_state["rows_oxy"]:
@@ -285,6 +353,21 @@ with tab_oxy:
         # ====== CỘNG DỒN TOÀN BỘ GIỜ OXY (KHÔNG TÍNH /24) ======
         st.markdown("## 📊 TỔNG GIỜ OXY TOÀN BỘ")
 
-        tong_gio_oxy_all = sum(r["Giờ oxy"] for r in st.session_state["rows_oxy"])
+        tong_gio_oxy_all = sum(gio_theo_ngay_oxy.values())
 
-        st.success(f"✅ TỔNG GIỜ OXY TOÀN BỘ: {round(tong_gio_oxy_all, 2)} giờ")
+        st.markdown(
+            f"""
+<div style="
+    text-align:center;
+    padding:16px;
+    border-radius:14px;
+    background-color:#1E90FF;
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+">
+    ✅ TỔNG GIỜ OXY TOÀN BỘ: {round(tong_gio_oxy_all, 2)} GIỜ
+</div>
+            """,
+            unsafe_allow_html=True,
+        )
