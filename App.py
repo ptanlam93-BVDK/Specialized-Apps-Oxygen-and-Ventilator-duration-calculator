@@ -5,20 +5,28 @@ st.set_page_config(
     layout="centered"
 )
 
-# ===============================
-# LOGO BỆNH VIỆN
-# ===============================
-st.image("logo.png", width=120)
+# ===== HEADER LOGO + TÊN BỆNH VIỆN + TÊN KHOA =====
+col1, col2 = st.columns([1.3, 6])
 
-st.markdown(
-    """
-    <h3 style="text-align:center; color:#1E90FF;">
-        🏥 BỆNH VIỆN ĐA KHOA ĐỒNG THÁP
-    </h3>
-    """,
-    unsafe_allow_html=True
-)
+with col1:
+    st.image("logo.png", width=150)
 
+with col2:
+    st.markdown(
+        """
+        <div style="margin-top:20px;">
+            <h1 style="color:#1E90FF; font-weight:900; margin-bottom:5px;">
+                🏥 BỆNH VIỆN ĐA KHOA ĐỒNG THÁP
+            </h1>
+            <h4 style="color:#FFA500; font-weight:700; margin-top:0px;">
+                Khoa Hồi sức tích cực – Chống độc
+            </h4>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+st.markdown("---")
 st.title("💻 Công cụ tính tiền Qui đổi giờ Thở máy/Thở oxy dành cho Điều dưỡng")
 
 st.markdown(
