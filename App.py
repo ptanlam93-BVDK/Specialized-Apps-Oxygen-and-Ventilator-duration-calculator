@@ -581,9 +581,10 @@ with tab_oxy:
 # ====== TỔNG GIỜ OXY TOÀN BỘ (CHỈ GIỜ) ======
 tong_gio_oxy_all = 0.0
 
-for ngay in gio_theo_ngay_oxy:
-    tong_gio_oxy_all += gio_theo_ngay_oxy[ngay]
+tong_gio_oxy_all = 0.0
 
+for r in st.session_state["rows_oxy"]:
+    tong_gio_oxy_all += r["Giờ oxy"]
 st.markdown("## 💲 TỔNG GIỜ OXY TOÀN BỘ")
 
 st.markdown(
