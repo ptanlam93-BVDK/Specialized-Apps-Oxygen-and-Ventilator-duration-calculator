@@ -13,7 +13,7 @@ st.title("💻 Công cụ tính giờ Thở máy/Thở oxy dành cho điều dư
 st.markdown(
     """
     **✅Công cụ này chỉ dùng để Tính toán và hiển thị kết quả**, không lưu dữ liệu, không tốn dung lượng, **không đăng nhập bất cứ ID hay Useremail/mật khẩu** nào.  
-    Hỗ trợ sử dụng **Qui đổi thời gian Thở máy (ngày giường HSCC – HSTC) & thời gian Thở Oxy**.
+    ✅Hỗ trợ sử dụng **Qui đổi thời gian Thở máy (ngày giường HSCC – HSTC) & thời gian Thở Oxy**.
 
     **✅Được xây dựng bởi**:**CNĐD**.**Phan Tấn Lãm**;  
     **✅Đơn vị:** **Khoa Hồi sức Tích cực - Chống độc**;    
@@ -249,9 +249,33 @@ with tab_may:
         st.session_state["rows_may"] = []
 
 if st.session_state["rows_may"]:
-    st.markdown("### 🧾 Các phiên thở máy đã nhập (bấm ❌ để xóa từng dòng)")
 
-    # Hiển thị từng dòng + nút xóa
+    st.markdown("""
+    <div style="
+        border-radius:14px;
+        padding:16px;
+        background-color:#f0f8ff;
+        border:2px solid #1E90FF;
+        margin-top:20px;
+    ">
+        <h3 style="color:#1E90FF; text-align:center; margin-bottom:12px;">
+            🧾 CÁC PHIÊN THỞ MÁY ĐÃ NHẬP
+        </h3>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Header bảng
+    c1, c2, c3, c4, c5, c6 = st.columns([2, 2, 2, 2, 2, 1])
+    with c1: st.markdown("**Ngày**")
+    with c2: st.markdown("**Bắt đầu**")
+    with c3: st.markdown("**Kết thúc**")
+    with c4: st.markdown("**Giờ thở máy**")
+    with c5: st.markdown("**Giá trị /24**")
+    with c6: st.markdown("**Xóa**")
+
+    st.markdown("---")
+
+    # Hiển thị từng dòng có nút XÓA
     for i, r in enumerate(st.session_state["rows_may"]):
         c1, c2, c3, c4, c5, c6 = st.columns([2, 2, 2, 2, 2, 1])
 
@@ -267,11 +291,10 @@ if st.session_state["rows_may"]:
             st.write(r["Giá trị /24"])
         with c6:
             if st.button("❌", key=f"xoa_{i}"):
-                # Xóa đúng 1 dòng, không đổi công thức
                 st.session_state["rows_may"].pop(i)
                 st.rerun()
 
-    # **Giữ nguyên** phần tính toán phía dưới
+    # ====== PHẦN TÍNH TOÁN GIỮ NGUYÊN, KHÔNG ĐƯỢC XÓA ======
     tong_theo_ngay = {}
     for r in st.session_state["rows_may"]:
         ngay = r["Ngày"]
