@@ -16,7 +16,7 @@ with col2:
         """
         <div style="margin-top:20px;">
             <h1 style="color:#1E90FF; font-weight:900; margin-bottom:5px;">
-                🏥 BỆNH VIỆN ĐA KHOA ĐỒNG THÁP
+                 BỆNH VIỆN ĐA KHOA ĐỒNG THÁP
             </h1>
             <h4 style="color:#FFA500; font-weight:700; margin-top:0px;">
                 Khoa Hồi sức tích cực – Chống độc
