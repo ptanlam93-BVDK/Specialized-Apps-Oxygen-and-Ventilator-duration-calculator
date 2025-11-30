@@ -38,14 +38,14 @@ st.title("💻 Công cụ tính tiền Qui đổi giờ Thở máy/Thở oxy dà
 
 st.markdown(
     """
-**🔴 Công cụ này chỉ dùng để Tính toán và hiển thị kết quả**, không lưu dữ liệu, không tốn dung lượng,  
+**🔴Công cụ này chỉ dùng để Tính toán và hiển thị kết quả**, không lưu dữ liệu, không tốn dung lượng,  
 **không đăng nhập bất cứ ID hay Useremail/mật khẩu** nào.  
 
-🔴 Hỗ trợ sử dụng **Qui đổi thời gian Thở máy (ngày giường HSCC – HSTC) & thời gian Thở Oxy**.
+ ✅Hỗ trợ sử dụng **Qui đổi thời gian Thở máy (ngày giường HSCC – HSTC) & thời gian Thở Oxy**.
 
 **🩺 Được xây dựng bởi:** **CNĐD. Phan Tấn Lãm**  
-**🟠 Đơn vị:** **Khoa Hồi sức Tích cực - Chống độc**  
-**🔴 Bệnh viện:** 🏥 **Bệnh viện Đa khoa Đồng Tháp**  
+**✅ Đơn vị:** **Khoa Hồi sức Tích cực - Chống độc**  
+**🏥 Bệnh viện:** **Bệnh viện Đa khoa Đồng Tháp**  
 
 ⛔ **Lưu ý chuyên môn (tóm tắt):**
 - **Qui đổi ngày giường** theo tổng thời gian **Thở máy trong từng ngày**:
