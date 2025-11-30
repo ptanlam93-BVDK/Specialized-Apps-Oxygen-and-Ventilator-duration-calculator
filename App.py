@@ -419,8 +419,8 @@ with tab_oxy:
             ket_qua_oxy = round(tong_gio_oxy, 2)
 
             st.markdown("---")
-            # Hộp kết quả oxy – HTML không thụt lề để tránh bị hiển thị như code
-            # Hộp kết quả oxy
+
+# Hộp kết quả oxy
 st.markdown(
 f"""
 <div style="text-align:center; padding:18px; border:2px solid red;
