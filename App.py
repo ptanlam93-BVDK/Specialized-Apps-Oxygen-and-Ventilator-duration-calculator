@@ -14,7 +14,7 @@ st.markdown(
     """
     Công cụ này chỉ dùng để **Tính toán và hiển thị kết quả**, không lưu dữ liệu, không tốn dung lượng, không đăng nhập bất cứ ID hay Usermail và mật khẩu nào.  
     Hỗ trợ sử dụng tính toán **Qui đổi thời gian Thở máy (Ngày giường HSCC – HSTC) & thời gian Thở Oxy**.
-    **Được xây dựng bởi:** CNĐD. **Phan Tấn Lãm**, **Đơn vị:**Khoa Hồi sức tích cực - Chống độc**, Bệnh viện:🏥 **Bệnh viện Đa khoa Đồng Tháp**.
+    **Được xây dựng bởi:**CNĐD.**Phan Tấn Lãm**, **Đơn vị:**Khoa Hồi sức tích cực - Chống độc**, Bệnh viện:🏥 **Bệnh viện Đa khoa Đồng Tháp**.
     ⛔ Lưu ý: Thời gian Thở máy qui ra (Ngày giường HSCC – HSTC) phải dựa theo thực tế. Phần mềm Không thể tính chính xác **Tuyệt đối**.
     < 0.3 → 1 HSCC, >= 0.3 – <= 0.8 → 0.5 HSCC + 0.5 HSTC, >= 0.8 → 1 HSTC, Bệnh nhân thời gian nằm dưới <= 4giờ tính công khám,  Bệnh nhân thời gian nằm dưới >4giờ tính 1 Ngày giường HSCC hoặc HSTC,
     **Thời điểm nằm 2 khoa liên tiếp khoa chuyển tiếp không tính ngày giường (Ví dụ: Nếu BN nằm CCTH - NTH - HSTC,  thì  NTH sẽ không tính 0.5 ngày giường, HSTC sẽ tính ngày giường)**.
@@ -124,62 +124,33 @@ with tab_may:
 
     if st.button("✅ TÍNH GIỜ THỞ MÁY (1 khoảng)"):
         tong_phut, err = tinh_phut(bd_may, kt_may)
-
         if err:
             st.error("⛔ " + err)
         else:
             tong_gio = tong_phut / 60
             ket_qua = round(tong_gio / 24, 3)
             hscc_1, hstc_1, loai_text = quy_doi_ngay_giuong(ket_qua)
-
-            st.markdown("---")
-            st.markdown(
-                f"""
-                <div style="
-                    text-align:center;
-                    padding:18px;
-                    border:2px solid red;
-                    border-radius:14px;
-                    background-color:#FFA500;
-                ">
-                    <div style="
-                        font-size:22px;
-                        color:#0066FF;
-                        font-weight:600;
-                    ">
-                        ⏰ Tổng thời gian thở máy
-                    </div>
-
-                    <div style="
-                        font-size:34px;
-                        font-weight:bold;
-                        color:red;
-                    ">
-                        {tong_gio:.2f} GIỜ ({tong_phut} phút)
-                    </div>
-
-                    <br>
-
-                    <div style="
-                        font-size:22px;
-                        color:#0066FF;
-                        font-weight:600;
-                    ">
-                        🧮 Kết quả quy đổi /24
-                    </div>
-
-                    <div style="
-                        font-size:42px;
-                        font-weight:bold;
-                        color:red;
-                    ">
-                        {ket_qua}
-                    </div>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-
+    st.markdown(
+    f"""
+    <div style="text-align:center; padding:18px; border:2px solid red;
+    border-radius:14px; background-color:#FFA500;">
+        <div style="font-size:22px; color:#0066FF; font-weight:600;">
+            ⏰ Tổng thời gian thở máy
+        </div>
+        <div style="font-size:34px; font-weight:bold; color:red;">
+            {tong_gio:.2f} GIỜ ({tong_phut} phút)
+        </div>
+        <br>
+        <div style="font-size:22px; color:#0066FF; font-weight:600;">
+            🧮 Kết quả quy đổi /24
+        </div>
+        <div style="font-size:42px; font-weight:bold; color:red;">
+            {ket_qua}
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
             st.markdown(
                 f"""
                 <div style="
@@ -196,7 +167,6 @@ with tab_may:
                 """,
                 unsafe_allow_html=True
             )
-
             # Chọn màu cho khung tóm tắt
             if hscc_1 == 1.0:
                 tomtat_color_1 = "#4da6ff"   # xanh HSCC
