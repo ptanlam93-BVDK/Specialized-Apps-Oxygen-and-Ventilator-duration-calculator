@@ -12,12 +12,12 @@ st.title("💻 Công cụ tính giờ Thở máy/Thở oxy dành cho điều dư
 
 st.markdown(
     """
-    **✅Công cụ này chỉ dùng để Tính toán và hiển thị kết quả**, không lưu dữ liệu, không tốn dung lượng, **không đăng nhập bất cứ ID hay Useremail/mật khẩu** nào.  
-    ✅Hỗ trợ sử dụng **Qui đổi thời gian Thở máy (ngày giường HSCC – HSTC) & thời gian Thở Oxy**.
+    **🔴Công cụ này chỉ dùng để Tính toán và hiển thị kết quả**, không lưu dữ liệu, không tốn dung lượng, **không đăng nhập bất cứ ID hay Useremail/mật khẩu** nào.  
+    🔴Hỗ trợ sử dụng **Qui đổi thời gian Thở máy (ngày giường HSCC – HSTC) & thời gian Thở Oxy**.
 
-    **✅Được xây dựng bởi**:**CNĐD**.**Phan Tấn Lãm**;  
-    **✅Đơn vị:** **Khoa Hồi sức Tích cực - Chống độc**;    
-    **✅Bệnh viện:** 🏥 **Bệnh viện Đa khoa Đồng Tháp**.
+    **🩺Được xây dựng bởi**:**CNĐD**.**Phan Tấn Lãm**;  
+    **🟠Đơn vị:** **Khoa Hồi sức Tích cực - Chống độc**;    
+    **🔴Bệnh viện:** 🏥 **Bệnh viện Đa khoa Đồng Tháp**.
     
     ⛔ **Lưu ý chuyên môn (tóm tắt):**
     - **Qui đổi ngày giường** theo tổng thời gian **Thở máy trong từng ngày**:
@@ -119,7 +119,7 @@ def quy_doi_ngay_giuong(tong_ngay: float):
 # ===============================
 with tab_may:
     # -------- PHẦN 1: 1 KHOẢNG TRONG NGÀY --------
-    st.subheader("💊 Tính GIỜ THỞ MÁY và NGÀY GIƯỜNG (1 khoảng trong ngày/24)")
+    st.subheader("💊 TÍNH GIỜ THỞ MÁY và NGÀY GIƯỜNG (1 khoảng trong ngày/24)")
 
     st.markdown("Nhập giờ dạng: `09h15`, `13:40`, `22h`, `24:00` …")
 
@@ -129,7 +129,7 @@ with tab_may:
     with col2:
         kt_may = st.text_input("Giờ kết thúc thở máy", placeholder="VD: 24:00")
 
-    if st.button("✅ TÍNH GIỜ THỞ MÁY (1 khoảng)"):
+    if st.button("⏰ TÍNH GIỜ THỞ MÁY (1 khoảng)"):
         tong_phut, err = tinh_phut(bd_may, kt_may)
         if err:
             st.error("⛔ " + err)
@@ -151,7 +151,7 @@ with tab_may:
                     </div>
                     <br>
                     <div style="font-size:22px; color:#0066FF; font-weight:600;">
-                        🧮 Kết quả quy đổi /24
+                        🛃 Kết quả quy đổi /24
                     </div>
                     <div style="font-size:42px; font-weight:bold; color:red;">
                         {ket_qua}
