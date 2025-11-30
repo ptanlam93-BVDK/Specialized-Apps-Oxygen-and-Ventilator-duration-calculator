@@ -494,7 +494,7 @@ with tab_oxy:
                         color:#FFFFFF;
                         font-weight:600;
                     ">
-                        ⏰ Giờ oxy (giờ thẳng)
+                        ⏰ Giờ oxy
                     </div>
 
                     <div style="
