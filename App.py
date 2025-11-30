@@ -56,9 +56,9 @@ st.markdown(
 st.markdown("""
 <style>
 div[role="tablist"] > button {
-    font-size: 26px !important;
+    font-size: 28px !important;
     padding: 10px 20px !important;
-    font-weight: 800 !important;
+    font-weight: bold !important;
     line-height: 1.2 !important;
 }
 
@@ -70,7 +70,7 @@ div[role="tablist"] > button[data-selected="true"] {
 
 @media (max-width: 600px) {
     div[role="tablist"] > button {
-        font-size: 22px !important;
+        font-size: 28px !important;
         padding: 8px 14px !important;
     }
 }
