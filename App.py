@@ -116,7 +116,7 @@ def quy_doi_ngay_giuong(tong_ngay: float):
 
 
 # ===============================
-# ⏰ TAB: GIỜ THỞ MÁY + NGÀY GIƯỜNG
+# ⏰ **TAB: GIỜ THỞ MÁY + NGÀY GIƯỜNG**
 # ===============================
 with tab_may:
     # -------- PHẦN 1: 1 KHOẢNG TRONG NGÀY --------
@@ -386,7 +386,7 @@ if st.session_state["rows_may"]:
         )
 
 # ===============================
-# 🔵 TAB: **GIỜ THỞ OXY**
+# 🔵 **TAB: **GIỜ THỞ OXY**
 # ===============================
 with tab_oxy:
     # -------- PHẦN 1: 1 KHOẢNG THỞ OXY TRONG NGÀY --------
