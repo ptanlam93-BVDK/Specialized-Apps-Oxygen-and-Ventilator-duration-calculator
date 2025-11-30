@@ -15,12 +15,12 @@ with col2:
     st.markdown(
         """
         <div style="margin-top:20px;">
-            <h1 style="color:#1E90FF; font-weight:800; margin-bottom:5px;">
+            <h1 style="color:#1E90FF; font-weight:bold; margin-bottom:5px;font-size:30px;">
                  BỆNH VIỆN ĐA KHOA ĐỒNG THÁP
-            <h1 style="color:#66CC66; font-weight:500; margin-bottom:4px;">
+            <h1 style="color:#66CC66; font-weight:bold; margin-bottom:5px;font-size:24px;">
                  Hôm nay phải tốt hơn ngày qua
             </h1>
-            <h4 style="color:#FFA500; font-weight:700; margin-top:0px;">
+            <h4 style="color:#FFA500; font-weight:700; margin-top:0px;font-size:25px;">
                 Khoa Hồi sức Tích cực – Chống độc
             </h4>
         </div>
@@ -167,14 +167,14 @@ with tab_may:
                     <div style="font-size:22px; color:#0066FF; font-weight:600;">
                         ⏰ Tổng thời gian thở máy
                     </div>
-                    <div style="font-size:34px; font-weight:bold; color:red;">
+                    <div style="font-size:26px; font-weight:bold; color:red;">
                         {tong_gio:.2f} GIỜ ({tong_phut} phút)
                     </div>
                     <br>
                     <div style="font-size:22px; color:#0066FF; font-weight:600;">
                         🛃 Kết quả quy đổi /24
                     </div>
-                    <div style="font-size:42px; font-weight:bold; color:red;">
+                    <div style="font-size:36px; font-weight:bold; color:red;">
                         {ket_qua}
                     </div>
                 </div>
@@ -191,7 +191,7 @@ with tab_may:
                     padding:10px;
                     border-radius:10px;
                     background-color:#0066FF;
-                    font-size:20px;
+                    font-size:18px;
                     font-weight:600;
                 ">
                     🛏️ Ngày ước tính: HSCC = {hscc_1} &nbsp;&nbsp;|&nbsp;&nbsp; HSTC = {hstc_1}
@@ -218,7 +218,7 @@ with tab_may:
                     border-radius:14px;
                     background-color:{tomtat_color_1};
                     color:white;
-                    font-size:24px;
+                    font-size:23px;
                     font-weight:bold;
                 ">
                     ✅ {loai_text}
@@ -360,7 +360,7 @@ if st.session_state["rows_may"]:
                 border-radius:14px;
                 background-color:#1E90FF;
                 color:white;
-                font-size:22px;
+                font-size:20px;
                 font-weight:bold;
             ">
                 ✅ TỔNG CỘNG TOÀN BỘ NGÀY GIƯỜNG: {tong_cong}
@@ -378,7 +378,7 @@ if st.session_state["rows_may"]:
                 border-radius:14px;
                 background-color:#4da6ff;
                 color:white;
-                font-size:22px;
+                font-size:20px;
                 font-weight:bold;
             ">
                 ✅ TỔNG HSCC: {tong_hscc}
