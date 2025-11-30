@@ -21,9 +21,9 @@ st.markdown(
     
     ⛔ **Lưu ý chuyên môn (tóm tắt):**
     - **Qui đổi ngày giường** theo tổng thời gian **Thở máy trong từng ngày**:
-        - `< 0.3`  → `1` ngày HSCC  
+        - `< 0.3`  → `1` Ngày HSCC  
         - `0.3 – 0.8` → `0.5` HSCC + `0.5` HSTC  
-        - `> 0.8`  → `1` ngày HSTC  
+        - `> 0.8`  → `1` Ngày HSTC  
     - BN nằm **≤ 4 giờ**: **Tính Công khám**.  
     - BN nằm **> 4 giờ** nhưng **< 24 giờ**: Tính **1 ngày giường** (HSCC hoặc HSTC theo thực tế).  
     - BN được **Chuyển qua nhiều khoa liên tiếp**: **Khoa trung gian **không** tính ngày giường**  
@@ -248,16 +248,35 @@ with tab_may:
     if st.button("🗑️ Xóa tất cả phiên"):
         st.session_state["rows_may"] = []
 
-    if st.session_state["rows_may"]:
-        st.markdown("### 🧾 Các phiên thở máy đã nhập")
-        st.table(st.session_state["rows_may"])
+if st.session_state["rows_may"]:
+    st.markdown("### 🧾 Các phiên thở máy đã nhập (bấm ❌ để xóa từng dòng)")
 
-        # Gom tổng theo từng ngày
-        tong_theo_ngay = {}
-        for r in st.session_state["rows_may"]:
-            ngay = r["Ngày"]
-            tong_theo_ngay.setdefault(ngay, 0.0)
-            tong_theo_ngay[ngay] += r["Giá trị /24"]
+    # Hiển thị từng dòng + nút xóa
+    for i, r in enumerate(st.session_state["rows_may"]):
+        c1, c2, c3, c4, c5, c6 = st.columns([2, 2, 2, 2, 2, 1])
+
+        with c1:
+            st.write(r["Ngày"])
+        with c2:
+            st.write(r["Bắt đầu"])
+        with c3:
+            st.write(r["Kết thúc"])
+        with c4:
+            st.write(r["Giờ thở máy"])
+        with c5:
+            st.write(r["Giá trị /24"])
+        with c6:
+            if st.button("❌", key=f"xoa_{i}"):
+                # Xóa đúng 1 dòng, không đổi công thức
+                st.session_state["rows_may"].pop(i)
+                st.rerun()
+
+    # **Giữ nguyên** phần tính toán phía dưới
+    tong_theo_ngay = {}
+    for r in st.session_state["rows_may"]:
+        ngay = r["Ngày"]
+        tong_theo_ngay.setdefault(ngay, 0.0)
+        tong_theo_ngay[ngay] += r["Giá trị /24"]
 
         st.markdown("## ✅ KẾT QUẢ NGÀY GIƯỜNG THEO TỪNG NGÀY")
 
