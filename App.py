@@ -44,7 +44,7 @@ st.markdown(
  ✅Hỗ trợ sử dụng **Qui đổi thời gian Thở máy (ngày giường HSCC – HSTC) & thời gian Thở Oxy**.
 
 **🩺 Được xây dựng bởi:** **CNĐD. Phan Tấn Lãm**  
-**✅ Đơn vị:** **Khoa Hồi sức Tích cực - Chống độc**  
+**⭐️ Đơn vị:** **Khoa Hồi sức Tích cực - Chống độc**  
 **🏥 Bệnh viện:** **Bệnh viện Đa khoa Đồng Tháp**  
 
 ⛔ **Lưu ý chuyên môn (tóm tắt):**
