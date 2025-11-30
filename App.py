@@ -207,7 +207,7 @@ with tab_may:
                 unsafe_allow_html=True
             )
 
-    # -------- PHẦN 2: NHIỀU PHIÊN, NHIỀU NGÀY --------
+    # -------- PHẦN 2: NHIỀU THỜI GIỜ, NHIỀU NGÀY --------
     st.markdown("---")
     st.subheader("📋 NHIỀU NGÀY THỞ MÁY (tính độc lập từng ngày)")
 
@@ -222,7 +222,7 @@ with tab_may:
     with c3:
         kt_row = st.text_input("Giờ kết thúc", placeholder="VD: 10h", key="row_kt")
     with c4:
-        add_row = st.button("➕ Thêm phiên")
+        add_row = st.button("➕ Thêm mới")
 
     if add_row:
         if not ngay_label:
@@ -245,7 +245,7 @@ with tab_may:
                     }
                 )
 
-    if st.button("🗑️ Xóa tất cả phiên"):
+    if st.button("🗑️ Xóa tất cả các giờ thở máy"):
         st.session_state["rows_may"] = []
 
 if st.session_state["rows_may"]:
@@ -259,7 +259,7 @@ if st.session_state["rows_may"]:
         margin-top:20px;
     ">
         <h3 style="color:#1E90FF; text-align:center; margin-bottom:12px;">
-            🧾 CÁC PHIÊN THỞ MÁY ĐÃ NHẬP
+            🧾 CÁC GIỜ THỞ MÁY ĐÃ NHẬP
         </h3>
     </div>
     """, unsafe_allow_html=True)
