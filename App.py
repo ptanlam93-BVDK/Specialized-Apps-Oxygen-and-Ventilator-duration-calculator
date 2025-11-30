@@ -14,13 +14,13 @@ with col1:
 with col2:
     st.markdown(
         """
-        <div style="margin-top:20px;">
-            <h1 style="color:#1E90FF; font-weight:bold; margin-bottom:5px;font-size:30px;">
+        <div style="margin-top:20px; line-height:1.5; text-align:center;">
+            <h1 style="color:#1E90FF; font-weight:bold; margin-bottom:6px;font-size:30px;">
                  BỆNH VIỆN ĐA KHOA ĐỒNG THÁP
-            <h1 style="color:#66CC66; font-weight:bold; margin-bottom:5px;font-size:24px;">
+            <h1 style="color:#66CC66; font-weight:bold; margin-bottom:6px;font-size:24px;">
                  Hôm nay phải tốt hơn ngày qua
             </h1>
-            <h4 style="color:#FFA500; font-weight:700; margin-top:0px;font-size:25px;">
+            <h4 style="color:#FFA500; font-weight:700; margin-top:6px;font-size:25px;">
                 Khoa Hồi sức Tích cực – Chống độc
             </h4>
         </div>
