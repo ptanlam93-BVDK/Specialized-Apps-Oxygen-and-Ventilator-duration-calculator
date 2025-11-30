@@ -460,54 +460,36 @@ with tab_oxy:
             tong_gio_oxy = tong_phut_oxy / 60
             ket_qua_oxy = round(tong_gio_oxy, 2)
 
-            st.markdown("---")
-            # Hộp kết quả oxy
             st.markdown(
-                f"""
-                <div style="
-                    text-align:center;
-                    padding:18px;
-                    border:2px solid red;
-                    border-radius:14px;
-                    background-color:#1E90FF;
-                ">
-                    <div style="
-                        font-size:22px;
-                        color:#FFFFFF;
-                        font-weight:600;
-                    ">
-                        🕒 Tổng thời gian thở oxy
-                    </div>
+    f"""
+    <div style="
+        text-align:center;
+        padding:18px;
+        border:2px solid red;
+        border-radius:14px;
+        background-color:#1E90FF;
+    ">
+        <div style="font-size:22px; color:#FFFFFF; font-weight:600;">
+            🕒 Tổng thời gian thở oxy
+        </div>
 
-                    <div style="
-                        font-size:34px;
-                        font-weight:bold;
-                        color:orange;
-                    ">
-                        {tong_gio_oxy:.2f} GIỜ ({tong_phut_oxy} phút)
-                    </div>
+        <div style="font-size:34px; font-weight:bold; color:orange;">
+            {tong_gio_oxy:.2f} GIỜ ({tong_phut_oxy} phút)
+        </div>
 
-                    <br>
+        <br>
 
-                    <div style="
-                        font-size:22px;
-                        color:#FFFFFF;
-                        font-weight:600;
-                    ">
-                        ⏰ Giờ oxy
-                    </div>
+        <div style="font-size:22px; color:#FFFFFF; font-weight:600;">
+            ⏰ Giờ oxy (giờ thẳng)
+        </div>
 
-                    <div style="
-                        font-size:42px;
-                        font-weight:bold;
-                        color:orange;
-                    ">
-                        {ket_qua_oxy}
-                    </div>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
+        <div style="font-size:42px; font-weight:bold; color:orange;">
+            {ket_qua_oxy}
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True,   # ✅ BẮT BUỘC PHẢI CÓ DÒNG NÀY
+)
 
     # -------- PHẦN 2: NHIỀU NGÀY THỞ OXY (tính độc lập từng ngày) --------
     st.markdown("---")
