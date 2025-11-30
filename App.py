@@ -266,7 +266,7 @@ with tab_may:
 
     # -------- PHẦN 2: NHIỀU NGÀY THỞ MÁY --------
     st.markdown("---")
-    st.subheader("📋 NHIỀU NGÀY THỞ MÁY (tính độc lập từng ngày)")
+    st.subheader("📋 NHIỀU NGÀY THỞ MÁY (tính từng ngày)")
 
     if "rows_may" not in st.session_state:
         st.session_state["rows_may"] = []
@@ -279,7 +279,7 @@ with tab_may:
     with c3:
         kt_may_row = st.text_input("Giờ kết thúc", placeholder="VD: 10h", key="may_row_kt")
     with c4:
-        add_may_row = st.button("➕ Thêm phiên THỞ MÁY")
+        add_may_row = st.button("🖋️ Thêm giờ")
 
     if add_may_row:
         if not ngay_may:
@@ -301,7 +301,7 @@ with tab_may:
                     }
                 )
 
-    if st.button("🗑️ Xóa tất cả thời gian thở MÁY"):
+    if st.button("🗑️ Xóa tất cả thời gian thở máy"):
         st.session_state["rows_may"] = []
 
     if st.session_state["rows_may"]:
@@ -317,7 +317,7 @@ with tab_may:
     margin-top:20px;
 ">
     <h3 style="color:#1E90FF; text-align:center; margin-bottom:12px;">
-        🧾 CÁC PHIÊN THỞ MÁY ĐÃ NHẬP
+        🛃 CÁC GIỜ THỞ MÁY ĐÃ NHẬP
     </h3>
 </div>
             """,
@@ -452,7 +452,7 @@ with tab_may:
 # ===============================
 with tab_oxy:
     # -------- PHẦN 1: 1 KHOẢNG THỞ OXY TRONG NGÀY --------
-    st.subheader("🔵 TÍNH GIỜ THỞ OXY (Một khoảng trong ngày/24h)")
+    st.subheader("⏰ TÍNH GIỜ THỞ OXY (Một khoảng trong ngày/24h)")
     st.markdown("Nhập giờ dạng: `09h15`, `13:30`, `22h`, `24:00` …")
 
     col3, col4 = st.columns(2)
