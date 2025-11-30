@@ -578,5 +578,27 @@ with tab_oxy:
             )
         st.table(bang_ket_qua_oxy)
 
+# ====== TỔNG GIỜ OXY TOÀN BỘ (CHỈ GIỜ) ======
+tong_gio_oxy_all = 0.0
 
-        st.table(bang_ket_qua_oxy)
+for ngay in gio_theo_ngay_oxy:
+    tong_gio_oxy_all += gio_theo_ngay_oxy[ngay]
+
+st.markdown("## 💲 TỔNG GIỜ OXY TOÀN BỘ")
+
+st.markdown(
+    f"""
+ <div style="
+    text-align:center;
+    padding:18px;
+    border-radius:14px;
+    background-color:#1E90FF;
+    color:white;
+    font-size:24px;
+    font-weight:bold;
+">
+✅ TỔNG GIỜ OXY TOÀN BỘ: {round(tong_gio_oxy_all, 2)} GIỜ
+</div>
+""",
+    unsafe_allow_html=True
+)
