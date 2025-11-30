@@ -8,7 +8,7 @@ st.set_page_config(
     layout="centered"
 )
 
-st.title("💻 Công cụ tính giờ Thở máy/Thở oxy dành cho điều dưỡng")
+st.title("💻 Công cụ tính tiền Qui đổi giờ Thở máy/Thở oxy dành cho Điều dưỡng")
 
 st.markdown(
     """
