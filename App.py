@@ -400,13 +400,13 @@ with tab_oxy:
         bd_oxy = st.text_input(
             "Giờ bắt đầu thở oxy",
             placeholder="VD: 13h30",
-            key="oxy_bd"
+            key="oxy_bd",
         )
     with col4:
         kt_oxy = st.text_input(
             "Giờ kết thúc thở oxy",
             placeholder="VD: 24:00",
-            key="oxy_kt"
+            key="oxy_kt",
         )
 
     if st.button("✅ TÍNH GIỜ THỞ OXY (1 khoảng)"):
@@ -419,7 +419,7 @@ with tab_oxy:
             ket_qua_oxy = round(tong_gio_oxy, 2)
 
             st.markdown("---")
-            # Hộp kết quả oxy – KHÔNG in code HTML nữa
+            # Hộp kết quả oxy
             st.markdown(
                 f"""
                 <div style="
@@ -464,7 +464,7 @@ with tab_oxy:
                     </div>
                 </div>
                 """,
-                unsafe_allow_html=True
+                unsafe_allow_html=True,
             )
 
     # -------- PHẦN 2: NHIỀU NGÀY THỞ OXY (tính độc lập từng ngày) --------
@@ -479,19 +479,19 @@ with tab_oxy:
         ngay_oxy = st.text_input(
             "Ngày",
             placeholder="VD: 02/12/2025",
-            key="oxy_row_ngay"
+            key="oxy_row_ngay",
         )
     with d2:
         bd_oxy_row = st.text_input(
             "Giờ bắt đầu",
             placeholder="VD: 0h",
-            key="oxy_row_bd"
+            key="oxy_row_bd",
         )
     with d3:
         kt_oxy_row = st.text_input(
             "Giờ kết thúc",
             placeholder="VD: 10h",
-            key="oxy_row_kt"
+            key="oxy_row_kt",
         )
     with d4:
         add_oxy_row = st.button("➕ Thêm phiên OXY")
@@ -524,28 +524,37 @@ with tab_oxy:
     if st.session_state["rows_oxy"]:
 
         # KHUNG ĐẸP cho “Các thời gian thở oxy đã nhập”
-        st.markdown("""
-        <div style="
-            border-radius:14px;
-            padding:16px;
-            background-color:#f0f8ff;
-            border:2px solid #1E90FF;
-            margin-top:20px;
-        ">
-            <h3 style="color:#1E90FF; text-align:center; margin-bottom:12px;">
-                🧾 CÁC THỜI GIAN THỞ OXY ĐÃ NHẬP
-            </h3>
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown(
+            """
+            <div style="
+                border-radius:14px;
+                padding:16px;
+                background-color:#f0f8ff;
+                border:2px solid #1E90FF;
+                margin-top:20px;
+            ">
+                <h3 style="color:#1E90FF; text-align:center; margin-bottom:12px;">
+                    🧾 CÁC THỜI GIAN THỞ OXY ĐÃ NHẬP
+                </h3>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
         # Header bảng
         c1, c2, c3, c4, c5, c6 = st.columns([2, 2, 2, 2, 2, 1])
-        with c1: st.markdown("**Ngày**")
-        with c2: st.markdown("**Bắt đầu**")
-        with c3: st.markdown("**Kết thúc**")
-        with c4: st.markdown("**Giờ oxy**")
-        with c5: st.markdown("**Giá trị /24**")
-        with c6: st.markdown("**Xóa**")
+        with c1:
+            st.markdown("**Ngày**")
+        with c2:
+            st.markdown("**Bắt đầu**")
+        with c3:
+            st.markdown("**Kết thúc**")
+        with c4:
+            st.markdown("**Giờ oxy**")
+        with c5:
+            st.markdown("**Giá trị /24**")
+        with c6:
+            st.markdown("**Xóa**")
 
         st.markdown("---")
 
@@ -616,7 +625,7 @@ with tab_oxy:
                 ✅ TỔNG GIỜ OXY: {round(tong_gio_oxy_all, 2)} giờ
             </div>
             """,
-            unsafe_allow_html=True
+            unsafe_allow_html=True,
         )
 
         st.markdown(
@@ -634,5 +643,6 @@ with tab_oxy:
                 ✅ TỔNG GIÁ TRỊ /24: {round(tong_giatri_oxy_all, 3)}
             </div>
             """,
-            unsafe_allow_html=True
+            unsafe_allow_html=True,
         )
+
