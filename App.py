@@ -8,19 +8,27 @@ st.set_page_config(
     layout="centered"
 )
 
-st.title("💻 **Công cụ tính giờ Thở máy/Thở oxy dành cho điều dưỡng**")
+st.title("💻 Công cụ tính giờ Thở máy/Thở oxy dành cho điều dưỡng")
 
 st.markdown(
     """
-    Công cụ này chỉ dùng để **Tính toán và hiển thị kết quả**, không lưu dữ liệu, không tốn dung lượng, không đăng nhập bất cứ ID hay Usermail và mật khẩu nào.  
-    Hỗ trợ sử dụng tính toán **Qui đổi thời gian Thở máy (Ngày giường HSCC – HSTC) & thời gian Thở Oxy**.
-    **Được xây dựng bởi:**CNĐD.**Phan Tấn Lãm**, **Đơn vị:**Khoa Hồi sức tích cực - Chống độc**, Bệnh viện:🏥 **Bệnh viện Đa khoa Đồng Tháp**.
-    ⛔ Lưu ý: Thời gian Thở máy qui ra (Ngày giường HSCC – HSTC) phải dựa theo thực tế. Phần mềm Không thể tính chính xác **Tuyệt đối**.
-    < 0.3 → 1 HSCC, >= 0.3 – <= 0.8 → 0.5 HSCC + 0.5 HSTC, >= 0.8 → 1 HSTC, Bệnh nhân thời gian nằm dưới <= 4giờ tính công khám,  Bệnh nhân thời gian nằm dưới >4giờ tính 1 Ngày giường HSCC hoặc HSTC,
-    **Thời điểm nằm 2 khoa liên tiếp khoa chuyển tiếp không tính ngày giường (Ví dụ: Nếu BN nằm CCTH - NTH - HSTC,  thì  NTH sẽ không tính 0.5 ngày giường, HSTC sẽ tính ngày giường)**.
-    **Bệnh nhân Chuyển viện theo yêu cầu: Không tính ngày giường ngày hiện tại cho dù Bác sĩ Tiên lượng nặng, trung binh, không thay đổi,...)**.
-    **Thời điểm Bệnh nhân nằm <24h tính 1 ngày giường Ngày giường HSCC hoặc HSTC**.
-    
+    Công cụ này chỉ dùng để **tính toán và hiển thị kết quả**, không lưu dữ liệu, không tốn dung lượng, không đăng nhập bất cứ ID hay email/mật khẩu nào.  
+    Hỗ trợ sử dụng **quy đổi thời gian Thở máy (ngày giường HSCC – HSTC) & thời gian Thở Oxy**.
+
+    **Được xây dựng bởi:** CNĐD **Phan Tấn Lãm**  
+    **Đơn vị:** Khoa Hồi sức tích cực - Chống độc  
+    **Bệnh viện:** 🏥 Bệnh viện Đa khoa Đồng Tháp.
+
+    ⛔ **Lưu ý chuyên môn (tóm tắt):**
+    - Quy đổi ngày giường theo tổng thời gian **thở máy trong từng ngày**:
+        - `< 0.3`  → `1` ngày HSCC  
+        - `0.3 – 0.8` → `0.5` HSCC + `0.5` HSTC  
+        - `> 0.8`  → `1` ngày HSTC  
+    - BN nằm ≤ 4 giờ: tính **công khám**.  
+    - BN nằm > 4 giờ nhưng < 24 giờ: vẫn tính **1 ngày giường** (HSCC hoặc HSTC theo thực tế).  
+    - BN chuyển qua nhiều khoa liên tiếp: **khoa trung gian không tính ngày giường**  
+      (VD: CCTH → NTH → HSTC thì NTH không tính 0.5 ngày).  
+    - BN chuyển viện theo yêu cầu: **không tính ngày giường ngày hiện tại**.
     """
 )
 
@@ -130,27 +138,31 @@ with tab_may:
             tong_gio = tong_phut / 60
             ket_qua = round(tong_gio / 24, 3)
             hscc_1, hstc_1, loai_text = quy_doi_ngay_giuong(ket_qua)
-    st.markdown(
-    f"""
-    <div style="text-align:center; padding:18px; border:2px solid red;
-    border-radius:14px; background-color:#FFA500;">
-        <div style="font-size:22px; color:#0066FF; font-weight:600;">
-            ⏰ Tổng thời gian thở máy
-        </div>
-        <div style="font-size:34px; font-weight:bold; color:red;">
-            {tong_gio:.2f} GIỜ ({tong_phut} phút)
-        </div>
-        <br>
-        <div style="font-size:22px; color:#0066FF; font-weight:600;">
-            🧮 Kết quả quy đổi /24
-        </div>
-        <div style="font-size:42px; font-weight:bold; color:red;">
-            {ket_qua}
-        </div>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+
+            # Hộp kết quả giờ thở máy
+            st.markdown(
+                f"""
+                <div style="text-align:center; padding:18px; border:2px solid red;
+                border-radius:14px; background-color:#FFA500;">
+                    <div style="font-size:22px; color:#0066FF; font-weight:600;">
+                        ⏰ Tổng thời gian thở máy
+                    </div>
+                    <div style="font-size:34px; font-weight:bold; color:red;">
+                        {tong_gio:.2f} GIỜ ({tong_phut} phút)
+                    </div>
+                    <br>
+                    <div style="font-size:22px; color:#0066FF; font-weight:600;">
+                        🧮 Kết quả quy đổi /24
+                    </div>
+                    <div style="font-size:42px; font-weight:bold; color:red;">
+                        {ket_qua}
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+
+            # Dòng ngày ước tính
             st.markdown(
                 f"""
                 <div style="
@@ -167,7 +179,8 @@ with tab_may:
                 """,
                 unsafe_allow_html=True
             )
-            # Chọn màu cho khung tóm tắt
+
+            # Chọn màu tóm tắt
             if hscc_1 == 1.0:
                 tomtat_color_1 = "#4da6ff"   # xanh HSCC
             elif hscc_1 == 0.5:
@@ -252,7 +265,7 @@ with tab_may:
         tong_hstc = 0.0
         bang_ket_qua = []
 
-        # Duyệt từng ngày (sắp xếp theo tên ngày cho dễ nhìn)
+        # Duyệt từng ngày
         for ngay, tong_ngay_raw in sorted(tong_theo_ngay.items()):
             tong_ngay = tong_ngay_raw
             if tong_ngay > 1.0:
@@ -387,7 +400,7 @@ with tab_oxy:
                         color:#FFFFFF;
                         font-weight:600;
                     ">
-                        ⏰ Giờ oxy 
+                        ⏰ Giờ oxy
                     </div>
 
                     <div style="
